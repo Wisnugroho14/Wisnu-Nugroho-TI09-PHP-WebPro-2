@@ -67,7 +67,6 @@
           $jumlah = $_POST['jumlah'];
           
           if(!empty($proses)) {
-            // echo 'Proses : '. $proses;
             echo '<br>Nama Customer : '. $nama;
             echo '<br>Produk Pilihan : '. $produk;
             echo '<br>Jumlah Beli : '. $jumlah;
