@@ -12,6 +12,7 @@
   <?php
   $ar_prodi = ["SI" => "Sistem Informasi", "TI" => "Teknik Informatika", "BD" => "Bisnis Digital"];
   $ar_skill = ["HTML" => 10, "CSS" => 10, "JAVASCRIPT" => 20, "RWD Bootsrap" => 20, "PHP" => 30, "Pyhton" => 30, "Java" => 50];
+  $ar_domisili = ['Jakarta', 'Depok', 'Bogor', 'Tanggerang', 'Bekasi', 'Lainnya'];
   ?>
   <fieldset style="background-color: aquamarine;">
     <legend>Form Registrasi IT Club Data Science</legend>
@@ -56,21 +57,35 @@
           <select name="prodi">
             <?php
             foreach ($ar_prodi as $prodi => $p) { ?>
-
               <option value="<?= $prodi ?>"> <?= $p ?> </option>
             <?php } ?>
           </select>
         </td>
       </tr>
       <tr>
-        <td>Skill Programming : </td>
+        <td>Skill Web & Programming : </td>
         <td>
-          <?php
-          foreach ($ar_skill as $skill => $s) {
-          ?>
-            <input type="checkbox" name="skills[]" value="<?= $s ?>"><?= $skill ?>
-          <?php } ?>
+          <?php foreach ($ar_skill as $skil => $value) : ?>
+            <input type="checkbox" name="skill[<?= $skil ?>]" value="<?= $value ?>"> <?= $skil ?>
+          <?php endforeach; ?>
         </td>
+      </tr>
+      <tr>
+        <td>
+          Domisili :
+        </td>
+        <td>
+          <select name="domisili">
+            <?php
+            foreach ($ar_domisili as $domisili) { ?>
+              <option value="<?= $domisili ?>"> <?= $domisili ?></option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Email : </td>
+        <td><input type="email" name="email" value="" size="30"></td>
       </tr>
       <tr>
         <td>
@@ -82,23 +97,29 @@
       </tr>
     </table>
   </fieldset>
+  <hr>
 
   <?php
   error_reporting(0);
   if (isset($_POST['proses'])) {
-
-    $nim    = $_POST['nim'];
-    $nama   = $_POST['nama'];
+    $nim = $_POST['nim'];
+    $nama = $_POST['nama'];
     $jk = $_POST['jk'];
     $prodi = $_POST['prodi'];
     $skill = $_POST['skill'];
+    $domisili = $_POST['domisili'];
+    $email = $_POST['email'];
+    $total_skor = 0;
+  }
   ?>
-    Nama : <?= $nama ?> <br>
-    NIM : <?= $nim ?> <br>
-    Jenis Kelamin : <?= $jk ?> <br>
-    Program Studi : <?= $prodi ?> <br>
-    Skill : <?= $skill ?> <br>
-  <?php } ?>
+
+  <?= "<br> NIM : $nim" ?>
+  <?= "<br> Nama : $nama" ?>
+  <?= "<br> Jenis Kelamin : $jk" ?>
+  <?= "<br> Program Studi : $prodi" ?>
+  <?= "<br> Skill : " . implode(", ", array_keys($skill)) ?>
+
+
   <?php
   function skor_skill($total)
   {
@@ -110,12 +131,23 @@
       return "Cukup";
     } elseif ($total >= 0 && $total <= 40) {
       return "Kurang";
+    } elseif ($total < 0) {
+      return "Tidak memadai";
     } else {
-      return "Tidak Memadai";
+      return "Tidak valid";
     }
   }
-  echo 'Kategori Skill : ' .skor_skill($total);
   ?>
+  <?php
+  $total = array_sum($skill);
+  $kategori_skill = skor_skill($total);
+  $email = isset($email) ? $email : '';
+  ?>
+
+  <?= "<br> Skor Skill: $total" ?>
+  <?= "<br> Kategori Skill: $kategori_skill" ?>
+  <?= "<br> Email: $email" ?>
+  <?= "<br> Tempat Domisili : $domisili" ?>
 </body>
 
 </html>
