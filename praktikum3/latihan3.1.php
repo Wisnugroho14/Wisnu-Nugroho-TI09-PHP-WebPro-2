@@ -97,7 +97,7 @@
       </tr>
     </table>
   </fieldset>
-  <hr>
+  <hr>            
 
   <?php
   error_reporting(0);
