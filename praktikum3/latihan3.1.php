@@ -97,7 +97,7 @@
       </tr>
     </table>
   </fieldset>
-  <hr>            
+  <hr>
 
   <?php
   error_reporting(0);
@@ -118,7 +118,6 @@
   <?= "<br> Jenis Kelamin : $jk" ?>
   <?= "<br> Program Studi : $prodi" ?>
   <?= "<br> Skill : " . implode(", ", array_keys($skill)) ?>
-
 
   <?php
   function skor_skill($total)
