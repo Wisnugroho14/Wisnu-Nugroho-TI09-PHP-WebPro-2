@@ -19,7 +19,7 @@
   <!-- /.login-logo -->
   <div class="card card-outline card-success">
     <div class="card-header text-center">
-      <img src="dist/img/dino.png" alt="Dino Planet" class="brand-image img-circle elevation" width="50%">
+      <img src="assets/img/portfolio/logo-dieng.jpg" alt="Dino Planet" class="brand-image img-circle elevation" width="50%">
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>

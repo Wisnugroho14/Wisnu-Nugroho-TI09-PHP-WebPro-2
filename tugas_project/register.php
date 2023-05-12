@@ -18,7 +18,7 @@
 <div class="register-box">
   <div class="card card-outline card-success">
     <div class="card-header text-center">
-      <img src="dist/img/dino.png" alt="Dino Planet" class="brand-image img-circle elevation" width="50%">
+      <img src="assets/img/portfolio/logo-dieng.jpg" alt="Dino Planet" class="brand-image img-circle elevation" width="50%">
     </div>
     <div class="card-body">
       <p class="login-box-msg">Register a new membership</p>
@@ -75,7 +75,7 @@
             <input type="submit" value="Register" class="btn btn-block btn-warning">
           </div>
           <div class="col-12">
-            <a href="login.html" class="btn btn-block btn-success">Already have account</a>
+            <a href="login.php" class="btn btn-block btn-success">Already have account</a>
           </div>
         </div>
       </form>

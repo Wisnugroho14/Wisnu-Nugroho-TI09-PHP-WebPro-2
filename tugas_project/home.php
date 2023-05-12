@@ -567,7 +567,17 @@
                 <textarea class="form-control" name="deskripsi" id="deskripsi" rows="5" placeholder="Deskripsi" required></textarea>
               </div>
               <div class="form-group mt-3 col-md-6">
-                <input type="number" class="form-control" name="produk_id" id="produk_id" placeholder="Produk ID" required>
+              <select class="form-control" name="produk_id" id="produk_id" required>
+              <option value="">Select Wisata</option>
+              <?php
+              $sql = "SELECT id, nama FROM produk";
+              $stmt = $dbh->prepare($sql);
+              $stmt->execute();
+              while ($row = $stmt->fetch()) {
+                echo "<option value='" . $row['id'] . "'>" . $row['nama'] . "</option>";
+              }
+              ?>
+            </select>
               </div>
             </div>
             <div class="text-center"><input type="submit" name="proses" value="Pesan Sekarang!" class="btn btn-primary"></div>
